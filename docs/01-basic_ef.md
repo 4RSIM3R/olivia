@@ -30,6 +30,10 @@ Push Migration To Database
 
 `dotnet ef database update`
 
+### After cloning
+
+`dotnet restore`
+
 
 
 
