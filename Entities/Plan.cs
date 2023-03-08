@@ -9,7 +9,7 @@ class Plan
 
     public int Price { get; set; }
 
-    public int MaxUser { get; set; }
+    public int MaxVoter { get; set; }
 
     public int MaxCandidate { get; set;}
 
