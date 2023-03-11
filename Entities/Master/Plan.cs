@@ -15,6 +15,8 @@ public class Plan : BaseEntity
 
     public int MaxCandidate { get; set; }
 
-    public int MaxDuration { get; set; }
+    public int MaxDurationDay { get; set; }
+
+    public int GracefulPeriodDay { get; set; }
 
 }

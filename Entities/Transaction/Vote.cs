@@ -1,9 +1,13 @@
-namespace Olivia.Entites;
 
-public class Vote 
+
+using Olivia.Entites.Base;
+using Olivia.Entites.Master;
+
+namespace Olivia.Entites.Transaction;
+
+public class Vote : BaseEntity
 {
-    public Voter Voter  { get; set; }
-    public int CandidateId { get; set; }
-    public int VoterId { get; set; }
-    public int TenantId { get; set; }
+    public Voter Voter { get; set; }
+    public Candidate Candidate { get; set; }
+    public Tenant Tenant { get; set; }
 }

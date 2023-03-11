@@ -12,5 +12,6 @@ public class Subcription : BaseEntity
     public Plan Plan { get; set; }
 
     public Tenant Tenant { get; set; }
+    
 
 }
