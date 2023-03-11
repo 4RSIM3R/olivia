@@ -35,6 +35,12 @@ class DBContext : DbContext
         return base.SaveChanges();
     }
 
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+    {
+        AddTimestamp();
+        return base.SaveChangesAsync();
+    }
+
     public void AddTimestamp()
     {
 
