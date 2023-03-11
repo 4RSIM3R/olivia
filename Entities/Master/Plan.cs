@@ -1,6 +1,8 @@
-namespace Olivia.Entites;
+using Olivia.Entites.Base;
 
-class Plan
+namespace Olivia.Entites.Master;
+
+public class Plan : BaseEntity
 {
 
     public int Id { get; set; }
@@ -11,7 +13,7 @@ class Plan
 
     public int MaxVoter { get; set; }
 
-    public int MaxCandidate { get; set;}
+    public int MaxCandidate { get; set; }
 
     public int MaxDuration { get; set; }
 

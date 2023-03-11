@@ -10,6 +10,6 @@ class DBContext : DbContext
         : base(options)
         => Interlocked.Increment(ref InstanceCount);
 
-    public DbSet<Plan> Plan { get; set; }
-    public DbSet<Subcription> Subcription { get; set; }
+    // public DbSet<Plan> Plan { get; set; }
+    // public DbSet<Subcription> Subcription { get; set; }
 }

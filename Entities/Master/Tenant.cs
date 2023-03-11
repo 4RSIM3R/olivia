@@ -1,6 +1,8 @@
-namespace Olivia.Entites;
+namespace Olivia.Entites.Master;
 
-class Tenant
+using Entites.Base;
+
+public class Tenant : BaseEntity
 {
     public int Id { get; set; }
     public string Name { get; set; }

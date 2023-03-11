@@ -1,6 +1,6 @@
-namespace Olivia.Entites;
+namespace Olivia.Entites.Master;
 
-class Voter
+public class Voter
 {
     public int Id { get; set; }
     public string SIN { get; set; }
@@ -10,5 +10,8 @@ class Voter
     public string Phone { get; set; }
     public string Address { get; set; }
     public string Major { get; set; }
+
+    public List<Tenant> Tenants { get; set; }
+
 
 }
