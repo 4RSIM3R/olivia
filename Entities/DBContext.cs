@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Olivia.Entites.Base;
 using Olivia.Entites.Master;
 using Olivia.Entites.Transaction;
+using Olivia.Entites.Seeder;
 
 namespace Olivia.Entites;
 
@@ -39,6 +40,12 @@ class DBContext : DbContext
     {
         AddTimestamp();
         return base.SaveChangesAsync();
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        new DBSeeder(modelBuilder).Seed();
     }
 
     public void AddTimestamp()
