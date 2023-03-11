@@ -1,6 +1,6 @@
 namespace Olivia.Entites.Base;
 
-public class BaseEntity
+public abstract class BaseEntity
 {
 
     public DateTime CreatedAt { get; set; }
