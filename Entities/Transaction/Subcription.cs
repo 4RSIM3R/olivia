@@ -9,9 +9,9 @@ public class Subcription : BaseEntity
 {
     public int Id { get; set; }
 
-    public Plan Plan { get; set; }
+    public required Plan Plan { get; set; }
 
-    public Tenant Tenant { get; set; }
-    
+    public required Tenant Tenant { get; set; }
+
 
 }
