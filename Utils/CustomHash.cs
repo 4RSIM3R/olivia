@@ -1,11 +1,10 @@
+using System;
 using System.Security.Cryptography;
 
 namespace Olivia.Utils;
 
 public class CustomHash
 {
-
-
     public static byte[] GenerateSalt()
     {
         // Generate a random salt using the RNGCryptoServiceProvider
@@ -18,10 +17,8 @@ public class CustomHash
     {
         // Hash the password using PBKDF2 with the same settings as Laravel
         int hashLength = 32;
-        using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256))
-        {
-            return pbkdf2.GetBytes(hashLength);
-        }
+        using var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations, HashAlgorithmName.SHA256);
+        return pbkdf2.GetBytes(hashLength);
     }
 
     public static bool Compare(string password, string hashedPassword)

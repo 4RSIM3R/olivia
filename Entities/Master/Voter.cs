@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Olivia.Entites.Master;
 
 public class Voter

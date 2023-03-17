@@ -7,7 +7,7 @@ public static class ServiceCollection
 {
     public static IServiceCollection AddOliviaRepositories(this IServiceCollection services)
     {
-        services.AddSingleton<IPlanRepository, PlanRepository>();
+        services.AddScoped<IPlanRepository, PlanRepository>();
         return services;
     }
 }
