@@ -6,11 +6,11 @@ using Olivia.Entites.Seeder;
 
 namespace Olivia.Entites;
 
-class DBContext : DbContext
+class ApplicationDbContext : DbContext
 {
     public static long InstanceCount;
 
-    public DBContext(DbContextOptions options)
+    public ApplicationDbContext(DbContextOptions options)
         : base(options)
         => Interlocked.Increment(ref InstanceCount);
 
@@ -36,10 +36,10 @@ class DBContext : DbContext
         return base.SaveChanges();
     }
 
-    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
     {
         AddTimestamp();
-        return base.SaveChangesAsync();
+        return base.SaveChangesAsync(cancellationToken);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -69,7 +69,4 @@ class DBContext : DbContext
         }
 
     }
-
-
-
 }
