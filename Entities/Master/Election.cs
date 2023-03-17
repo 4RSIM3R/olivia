@@ -1,8 +1,10 @@
+using System;
+using System.Collections.Generic;
 using Olivia.Entites.Base;
 
 namespace Olivia.Entites.Master;
 
-class Election : BaseEntity
+public class Election : BaseEntity
 {
 
     public int Id { get; set; }
