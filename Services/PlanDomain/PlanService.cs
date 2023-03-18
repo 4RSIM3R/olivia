@@ -20,4 +20,24 @@ public sealed class PlanService
     {
         return _planRepository.GetAllAsync(cancellationToken);
     }
+
+    public Task<Plan> GetByIdAsync(int id, CancellationToken cancellationToken)
+    {
+        return _planRepository.GetByIdAsync(id, cancellationToken);
+    }
+
+    public Task<Plan> CreatePlanAsync(Plan plan, CancellationToken cancellationToken)
+    {
+        return _planRepository.CreateAsync(plan, cancellationToken);
+    }
+
+    public Task DeletePlanByIdAsync(int id, CancellationToken cancellationToken)
+    {
+        return _planRepository.DeleteByIdAsync(id, cancellationToken);
+    }
+
+    public Task UpdatePlanByIdAsync(Plan plan, CancellationToken cancellationToken)
+    {
+        return _planRepository.UpdateAsync(plan, cancellationToken);
+    }
 }

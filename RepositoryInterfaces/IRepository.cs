@@ -9,6 +9,7 @@ public interface IRepository<TData>
 {
     public Task<IEnumerable<TData>> GetAllAsync(CancellationToken cancellationToken);
     public Task<TData> GetByIdAsync(int id, CancellationToken cancellationToken);
-    public Task CreateAsync(TData input, CancellationToken cancellationToken);
+    public Task<TData> CreateAsync(TData input, CancellationToken cancellationToken);
+    public Task UpdateAsync(TData input, CancellationToken cancellationToken);
     public Task DeleteByIdAsync(int id, CancellationToken cancellationToken);
 }
