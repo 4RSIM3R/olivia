@@ -17,4 +17,11 @@
     <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="DockerData\**" />
+    <Compile Remove="DockerData\**" />
+    <EmbeddedResource Remove="DockerData\**" />
+    <None Remove="DockerData\**" />
+  </ItemGroup>
+
 </Project>
