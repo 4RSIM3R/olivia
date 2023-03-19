@@ -22,38 +22,27 @@ public sealed class PlanRepository : IPlanRepository
 
     public async Task<Plan> CreateAsync(Plan input, CancellationToken cancellationToken)
     {
-        var transaction = _dbContext.Database.BeginTransaction();
-        try
+        var planEntry = new Entities.Master.Plan()
         {
-            await transaction.CreateSavepointAsync("createPlan");
-            var planEntry = new Entities.Master.Plan()
-            {
-                Name = input.Name,
-                GracefulPeriodDay = input.GracefulPeriodDay,
-                MaxDurationDay = input.MaxDurationDay,
-                Price = input.Price,
-                MaxVoter = input.MaxVoter,
-                MaxCandidate = input.MaxCandidate,
-            };
-            await _dbContext.Plan.AddAsync(planEntry, cancellationToken);
-            await _dbContext.SaveChangesAsync(cancellationToken);
-            transaction.Commit();
-            return new Plan
-            {
-                Id = planEntry.Id,
-                Name = planEntry.Name,
-                Price = planEntry.Price,
-                MaxVoter = planEntry.MaxVoter,
-                MaxCandidate = planEntry.MaxCandidate,
-                MaxDurationDay = planEntry.MaxDurationDay,
-                GracefulPeriodDay = planEntry.GracefulPeriodDay,
-            };
-        }
-        catch (System.Exception)
+            Name = input.Name,
+            GracefulPeriodDay = input.GracefulPeriodDay,
+            MaxDurationDay = input.MaxDurationDay,
+            Price = input.Price,
+            MaxVoter = input.MaxVoter,
+            MaxCandidate = input.MaxCandidate,
+        };
+        await _dbContext.Plan.AddAsync(planEntry, cancellationToken);
+        await _dbContext.SaveChangesAsync(cancellationToken);
+        return new Plan
         {
-            await transaction.RollbackToSavepointAsync("createPlan");
-            throw;
-        }
+            Id = planEntry.Id,
+            Name = planEntry.Name,
+            Price = planEntry.Price,
+            MaxVoter = planEntry.MaxVoter,
+            MaxCandidate = planEntry.MaxCandidate,
+            MaxDurationDay = planEntry.MaxDurationDay,
+            GracefulPeriodDay = planEntry.GracefulPeriodDay,
+        };
     }
 
     public async Task UpdateAsync(Plan input, CancellationToken cancellationToken)
