@@ -3,7 +3,7 @@ using Olivia.RepositoryInterfaces;
 
 namespace Olivia.Repositories;
 
-public static class ServiceCollection
+public static class ServiceCollectionExtension
 {
     public static IServiceCollection AddOliviaRepositories(this IServiceCollection services)
     {

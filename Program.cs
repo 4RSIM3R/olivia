@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Olivia.DTOs;
 using Olivia.Entities;
 using Olivia.Repositories;
 using Olivia.Services;
@@ -19,6 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddApplicationDbContext();
 builder.Services.AddOliviaRepositories();
 builder.Services.AddOliviaServices();
+builder.Services.AddFluentValidation();
 
 var app = builder.Build();
 
