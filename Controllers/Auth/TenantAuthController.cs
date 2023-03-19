@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentValidation;
@@ -27,8 +28,9 @@ public class TenantAuthController : ControllerBase
 
         if (!result.IsValid)
         {
-            var errorMessages = result.Errors.Select(x => x.ErrorMessage).ToList();
-            return BadRequest(errorMessages);
+            var errors = new Dictionary<string, string>();
+            result.Errors.ForEach(x => errors.Add(x.PropertyName, x.ErrorMessage));
+            return BadRequest(new ResponseBase<Dictionary<string, string>>("validation error", errors));
         }
 
         return Ok(new ResponseBase<RegisterTenant>("Sccess Register", registerTenant));
