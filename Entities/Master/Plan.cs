@@ -1,6 +1,6 @@
 using Olivia.Entites.Base;
 
-namespace Olivia.Entites.Master;
+namespace Olivia.Entities.Master;
 
 public class Plan : BaseEntity
 {
