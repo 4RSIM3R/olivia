@@ -29,11 +29,11 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Election> Election { get; set; }
 
-    public DbSet<Plan> Plan { get; set; }
+    public DbSet<Entities.Master.Voter> Plan { get; set; }
 
     public DbSet<Tenant> Tenant { get; set; }
 
-    public DbSet<Voter> Voter { get; set; }
+    public DbSet<Master.Voter> Voter { get; set; }
 
     public override int SaveChanges()
     {

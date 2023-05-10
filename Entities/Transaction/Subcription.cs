@@ -10,7 +10,7 @@ public class Subcription : BaseEntity
 {
     public int Id { get; set; }
 
-    public required Plan Plan { get; set; }
+    public required Entities.Master.Voter Plan { get; set; }
 
     public required Tenant Tenant { get; set; }
 

@@ -22,7 +22,7 @@ public sealed class PlanRepository : IPlanRepository
 
     public async Task<Plan> CreateAsync(Plan input, CancellationToken cancellationToken)
     {
-        var planEntry = new Entities.Master.Plan()
+        var planEntry = new Entities.Master.Voter()
         {
             Name = input.Name,
             GracefulPeriodDay = input.GracefulPeriodDay,
