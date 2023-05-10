@@ -7,7 +7,7 @@ public static class ServiceCollectionExtension
 {
     public static IServiceCollection AddOliviaRepositories(this IServiceCollection services)
     {
-        services.AddScoped<IPlanRepository, PlanRepository>();
+        services.AddScoped<ICandidateRepository, PlanRepository>();
         services.AddScoped<IAuthTenantRepository, AuthTenantRepository>();
         return services;
     }

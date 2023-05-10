@@ -9,9 +9,9 @@ namespace Olivia.Services.PlanDomain;
 
 public sealed class PlanService
 {
-    private readonly IPlanRepository _planRepository;
+    private readonly ICandidateRepository _planRepository;
 
-    public PlanService(IPlanRepository planRepository)
+    public PlanService(ICandidateRepository planRepository)
     {
         _planRepository = planRepository;
     }

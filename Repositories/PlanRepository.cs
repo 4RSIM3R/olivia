@@ -11,7 +11,7 @@ using Olivia.RepositoryInterfaces;
 
 namespace Olivia.Repositories;
 
-public sealed class PlanRepository : IPlanRepository
+public sealed class PlanRepository : ICandidateRepository
 {
     private readonly ApplicationDbContext _dbContext;
 
