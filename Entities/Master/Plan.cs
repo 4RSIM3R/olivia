@@ -2,7 +2,7 @@ using Olivia.Entites.Base;
 
 namespace Olivia.Entities.Master;
 
-public class Plan : BaseEntity
+public class Tenant : BaseEntity
 {
 
     public int Id { get; set; }

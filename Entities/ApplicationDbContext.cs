@@ -29,9 +29,9 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Election> Election { get; set; }
 
-    public DbSet<Plan> Plan { get; set; }
+    public DbSet<Entities.Master.Tenant> Plan { get; set; }
 
-    public DbSet<Tenant> Tenant { get; set; }
+    public DbSet<Master.Tenant> Tenant { get; set; }
 
     public DbSet<Voter> Voter { get; set; }
 
