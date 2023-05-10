@@ -3,16 +3,21 @@ using Olivia.Entites.Base;
 using Olivia.Entites.Master;
 using Olivia.Entites.Transaction;
 using Olivia.Entites.Seeder;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Linq;
+using System;
+using Olivia.Entities.Master;
 
 namespace Olivia.Entites;
 
-class DBContext : DbContext
+public class ApplicationDbContext : DbContext
 {
-    public static long InstanceCount;
+    private static long instanceCount;
 
-    public DBContext(DbContextOptions options)
+    public ApplicationDbContext(DbContextOptions options)
         : base(options)
-        => Interlocked.Increment(ref InstanceCount);
+        => Interlocked.Increment(ref instanceCount);
 
     // Transaction
     public DbSet<Subcription> Subcription { get; set; }
@@ -36,10 +41,10 @@ class DBContext : DbContext
         return base.SaveChanges();
     }
 
-    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
     {
         AddTimestamp();
-        return base.SaveChangesAsync();
+        return base.SaveChangesAsync(cancellationToken);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -56,8 +61,7 @@ class DBContext : DbContext
 
         foreach (var entity in entities)
         {
-            var now = DateTime.UtcNow; // current datetime
-
+            var now = DateTime.UtcNow;
             if (entity.State == EntityState.Added)
             {
                 ((BaseEntity)entity.Entity).CreatedAt = now;
@@ -69,7 +73,4 @@ class DBContext : DbContext
         }
 
     }
-
-
-
 }

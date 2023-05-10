@@ -10,7 +10,7 @@ using Olivia.Entites;
 
 namespace Olivia.Migrations
 {
-    [DbContext(typeof(DBContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20230311155046_Initial")]
     partial class Initial
     {

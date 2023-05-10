@@ -1,16 +1,26 @@
-using Microsoft.EntityFrameworkCore;
-using Olivia.Entites;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Olivia.DTOs;
+using Olivia.Entities;
+using Olivia.Repositories;
+using Olivia.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DBConnection");
-// Add services to the container.
-builder.Services.AddDbContextPool<DBContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+// add database options
+builder.Services.Configure<DatabaseOptions>(builder.Configuration.GetSection("DatabaseOptions"));
+
+// configure swagger
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add services to the container.
+builder.Services.AddApplicationDbContext();
+builder.Services.AddOliviaRepositories();
+builder.Services.AddOliviaServices();
+builder.Services.AddFluentValidation();
 
 var app = builder.Build();
 

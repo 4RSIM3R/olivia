@@ -1,3 +1,4 @@
+using System;
 using Microsoft.EntityFrameworkCore;
 using Olivia.Entites.Master;
 using Olivia.Utils;
@@ -17,7 +18,13 @@ public class DBSeeder
     public void Seed()
     {
         ModelBuilder.Entity<Tenant>().HasData(
-            new Tenant() { Id = 1, Name = "HMTI", Email = "hmti@polinema.ac.id", Password = Convert.ToBase64String(CustomHash.HashPassword("password", CustomHash.GenerateSalt())) }
+            new Tenant()
+            {
+                Id = 1,
+                Name = "HMTI",
+                Email = "hmti@polinema.ac.id",
+                Password = Convert.ToBase64String(CustomHash.HashPassword("password", CustomHash.GenerateSalt()))
+            }
         );
     }
 }

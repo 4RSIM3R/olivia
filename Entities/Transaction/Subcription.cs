@@ -1,6 +1,7 @@
 
 using Olivia.Entites.Base;
 using Olivia.Entites.Master;
+using Olivia.Entities.Master;
 
 namespace Olivia.Entites.Transaction;
 
